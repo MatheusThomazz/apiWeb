@@ -1,59 +1,24 @@
 // Criação do modulo princiapal da aplicação
-var appCliente = angular.module("appCliente", []);
+var appCliente = angular.module("appCliente", ['ngRoute']);
 
-//Criação de controller
-appCliente.controller("indexController", function($scope, $http){
+appCliente.config(function($routeProvider, $locationProvider){
 	
-	$scope.clientes=[];
-	$scope.cliente={};
 	
-	$scope.carregarCliente = function(){
-	$http({method: 'GET', url:'http://localhost:8080/clientes'})
-	.then(function (response){
-		
-		$scope.clientes=response.data;
+	$routeProvider
+	.when("/clientes", 
+			{templateUrl:'view/cliente.html',
+				 controller:'clienteController'
+	}).when("/cidades", 
+			{templateUrl:'view/cidade.html',
+				 controller:'cidadeController'
+	}).when("/estados", 
+			{templateUrl:'view/estado.html',
+		 controller:'estadoController'
+	}).otherwise({
+	   rediretTo:'/'
+    });
 	
-	}, function (response){
-		
-		console.log(response.data);
-		console.log(response.status);
-		
-	});
-	};
+	  $locationProvider.html5Mode(true);
 	
-	$scope.carregarCliente()
-	
-	$scope.salvarCliente = function(){
-		$http({method: 'POST', url:'http://localhost:8080/clientes', data:$scope.cliente})
-		.then(function (response){
-			$scope.clientes.push(response.data);
-	
-		}, function (response){
-			
-			console.log(response.data);
-			console.log(response.status);
-			
-		});
-		};
-		
-		$scope.carregarCliente()
-		
-		$scope.excluirCliente = function(cliente){
-			$http({method: 'DELETE', url:'http://localhost:8080/clientes/'+ cliente.id})
-			.then(function (response){
-				$scope.clientes.push(response.data);
-		
-			}, function (response){
-				
-				console.log(response.data);
-				console.log(response.status);
-				
-			});
-			};
-			
-			
-		
-		
-
 });
 
