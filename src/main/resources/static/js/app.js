@@ -8,7 +8,10 @@ appCliente.config(function($routeProvider, $locationProvider){
 	.when("/clientes", 
 			{templateUrl:'view/cliente.html',
 				 controller:'clienteController'
-	}).when("/cidades", 
+	}).when("/clientes/:clienteId", 
+			{templateUrl:'view/clienteDetalhe.html',
+		 controller:'clienteDetalheController'
+    }).when("/cidades", 
 			{templateUrl:'view/cidade.html',
 				 controller:'cidadeController'
 	}).when("/estados", 
