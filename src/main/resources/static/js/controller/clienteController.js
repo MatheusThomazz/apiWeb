@@ -21,10 +21,12 @@ appCliente.controller("clienteController", function($scope, $http){
 	$scope.carregarCliente()
 	
 	$scope.salvarCliente = function(){
+		if($scope.frmCliente.$valid){
 		$http({method: 'POST', url:'http://localhost:8080/clientes', data:$scope.cliente})
 		.then(function (response){
 			$scope.clientes.push(response.data)
 			$scope.carregarCliente();
+			$scope.frmCliente.$setPristine();
 			delete $scope.cliente;
 	
 		}, function (response){
@@ -33,7 +35,10 @@ appCliente.controller("clienteController", function($scope, $http){
 			console.log(response.status);
 			
 		});
-		};
+		}else{
+			window.alert("Dados Invalidos")
+			 }
+		}
 		
 		$scope.carregarCliente();
 		

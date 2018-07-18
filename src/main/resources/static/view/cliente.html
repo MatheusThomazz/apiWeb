@@ -1,8 +1,21 @@
 <div ng-controller="clienteController">
-<input type="text" ng-model="cliente.nome"/>
-<input type="button" value="salvar" ng-click="salvarCliente()"/>
-<input type="button" value="cancelar" ng-click="cancelarAlterarCliente()"/>
 
+<form novalidade name="frmCliente">
+<div>
+<input type="text" name="txtNome"  ng-model="cliente.nome" required placeholder="Nome" ng-minlength="3" ng-maxlength="20"/>
+<span ng-show="frmCliente.txtNome.$error.required && frmCliente.txtNome.$dirty">Campo nome obrigatorio</span>
+</div>
+</br>
+<div>
+<input type="email" name="txtEmail"  ng-model="cliente.email" required placeholder="email@email"/>
+<span ng-show="frmCliente.txtEmail.$error.required && frmCliente.txtEmail.$dirty">Campo Email obrigatorio</span>
+<span ng-show="frmCliente.txtEmail.$error.email">Email invalido</span>
+</div>
+
+
+<input type="button" value="salvar" ng-click="salvarCliente()"/>
+<input type="button" value="cancelar" ng-click="cancelarAlterarCliente()" ng-disabled="frmCliente.$invalid"/>
+</form>
 <div ng-repeat="cli in clientes">
 
 	{{cli.nome +' '+ cli.id}} 
