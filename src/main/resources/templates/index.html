@@ -2,35 +2,34 @@
 <html ng-app="appCliente">
 <head>
 <base href="/" />
-<meta charset="ISO-8859-1"/>
+<meta charset="ISO-8859-1" />
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-<script src= "//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
 <script src="./js/app.js"></script>
 <script src="./js/controller/mainController.js"></script>
 <script src="./js/controller/clienteController.js"></script>
 <script src="./js/controller/clienteDetalheController.js"></script>
 <script src="./js/controller/cidadeController.js"></script>
 <script src="./js/controller/estadoController.js"></script>
+<script src="./js/controller/loginController.js"></script>
 
 
 
 </head>
 <body ng-controller="mainController">
 
-<a href="/clientes">cliente</a> |
-<a href="/cidades">cidades</a>  |
-<a href="/estados">estados</a>  |
-<br/>
-Path:{{$location.path()}}
-<br/>
-Template URL:{{$route.current.templateUrl}}
-<br/>
-Parametros :{{$routeParams}}
-<div ng-view="ng-view">
-
-
-</div>
+	<a href="/clientes">cliente</a> |
+	<a href="/cidades">cidades</a> |
+	<a href="/estados">estados</a> |
+	<a href="/login">login</a> |
+	
+	<br /> Path:{{$location.path()}}
+	<br /> Template URL:{{$route.current.templateUrl}}
+	<br /> Parametros :{{$routeParams}}
+	<div ng-view="ng-view"></div>
 
 </body>
 
