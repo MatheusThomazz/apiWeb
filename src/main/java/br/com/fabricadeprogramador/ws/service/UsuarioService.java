@@ -18,6 +18,10 @@ public class UsuarioService {
 		
 	}
 	
+	public Usuario buscarPorNome(String nome) {
+		return usuarioRepository.buscarPorNome(nome);
+	}
+	
 	
 
 }

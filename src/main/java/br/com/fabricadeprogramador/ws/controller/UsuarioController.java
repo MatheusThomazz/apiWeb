@@ -21,7 +21,7 @@ public class UsuarioController {
 	@RequestMapping(method = RequestMethod.POST, value = "/usuarios", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Usuario> CadastrarUsuario(@RequestBody Usuario usuario) {
 		
-		 Usuario usurioCadastrado =usuarioService.cadastrar(usuario);
+		 Usuario usurioCadastrado = usuarioService.cadastrar(usuario);
 		 
 		 return new ResponseEntity<Usuario>(usurioCadastrado, HttpStatus.OK);
 	}

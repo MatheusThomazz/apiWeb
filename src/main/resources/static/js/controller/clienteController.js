@@ -5,7 +5,7 @@ appCliente.controller("clienteController", function($scope, $http){
 	$scope.cliente={};
 	
 	$scope.carregarCliente = function(){
-	$http({method: 'GET', url:'http://localhost:8080/clientes'})
+	$http({method: 'GET', url:'/admin/clientes'})
 	.then(function (response){
 		
 		$scope.clientes=response.data;
@@ -22,7 +22,7 @@ appCliente.controller("clienteController", function($scope, $http){
 	
 	$scope.salvarCliente = function(){
 		if($scope.frmCliente.$valid){
-		$http({method: 'POST', url:'http://localhost:8080/clientes', data:$scope.cliente})
+		$http({method: 'POST', url:'/admin/clientes', data:$scope.cliente})
 		.then(function (response){
 			$scope.clientes.push(response.data)
 			$scope.carregarCliente();
@@ -43,7 +43,7 @@ appCliente.controller("clienteController", function($scope, $http){
 		$scope.carregarCliente();
 		
 		$scope.excluirCliente = function(cliente){
-			$http({method: 'DELETE', url:'http://localhost:8080/clientes/'+ cliente.id})
+			$http({method: 'DELETE', url:'/admin/clientes/'+ cliente.id})
 			.then(function (response){
 				
 				pos = $scope.clientes.indexOf(cliente);

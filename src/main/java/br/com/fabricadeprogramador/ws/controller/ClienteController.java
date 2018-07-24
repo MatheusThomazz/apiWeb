@@ -19,6 +19,7 @@ import br.com.fabricadeprogramador.ws.service.ClienteService;
 
 
 @RestController
+@RequestMapping("/admin")
 public class ClienteController {
 	
 	@Autowired
